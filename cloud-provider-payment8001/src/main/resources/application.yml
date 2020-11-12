@@ -1,0 +1,15 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: cloud-payment-service
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone:  http://eureka7001.com:7001/eureka
+  instance: # 自己在注册中心显示的名字
+    instance-id: payment8001
+    prefer-ip-address: true # 在注册中心，鼠标移动到实例名字上时显示对应的ip

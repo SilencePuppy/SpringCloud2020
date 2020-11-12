@@ -1,0 +1,11 @@
+server:
+  port: 7001
+
+eureka:
+  instance:
+    hostname: eureka7001.com  #显示的注册中心名称
+  client:
+    register-with-eureka: false #是否将自己也注册道中心
+    fetch-registry: false #是否从中心拉取注册信息 (自己就是注册中心，所以不需要了)
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/ # 如何是单机版，就是自己的地址，否则是集群中其它人的

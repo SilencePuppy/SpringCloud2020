@@ -1,0 +1,19 @@
+server:
+  port: 80
+spring:
+  application:
+    name: consuemr-fegin-order-service
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
+
+  instance:
+    instance-id: orderFegin80
+    prefer-ip-address: true
+
+logging:
+  level:
+    com.hc.springcloud: debug
