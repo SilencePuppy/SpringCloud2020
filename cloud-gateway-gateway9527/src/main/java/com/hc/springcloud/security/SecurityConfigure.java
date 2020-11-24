@@ -22,7 +22,7 @@ public class SecurityConfigure implements ApplicationContextAware {
     @Bean
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         OaSecurityContextRepository securityContextRepository = this.applicationContext.getBean(OaSecurityContextRepository.class);
-        return http.securityContextRepository(securityContextRepository)
+        SecurityWebFilterChain build = http.securityContextRepository(securityContextRepository)
                 .authorizeExchange()
                 .anyExchange().access(new OaAccessManager())
                 .and()
@@ -30,6 +30,8 @@ public class SecurityConfigure implements ApplicationContextAware {
                 .securityContextRepository(securityContextRepository)
                 .and()
                 .build();
+
+        return build;
     }
 
     @Bean

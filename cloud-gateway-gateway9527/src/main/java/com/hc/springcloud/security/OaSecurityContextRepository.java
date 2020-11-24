@@ -59,4 +59,5 @@ public class OaSecurityContextRepository implements ServerSecurityContextReposit
         SecurityContextImpl securityContext =new SecurityContextImpl(token);
         return Mono.just(securityContext);
     }
+
 }

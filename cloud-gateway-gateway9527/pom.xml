@@ -38,10 +38,18 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
+
         <dependency>
             <groupId>com.hc.springcluod</groupId>
             <artifactId>cloud-api-commons</artifactId>
             <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
