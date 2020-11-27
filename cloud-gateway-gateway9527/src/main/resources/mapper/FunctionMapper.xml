@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hc.springcloud.dao.FunctionDao">
+  <resultMap id="BaseResultMap" type="com.hc.springcloud.entity.Function">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="function_name" jdbcType="VARCHAR" property="functionName" />
+    <result column="function_code" jdbcType="VARCHAR" property="functionCode" />
+    <result column="p_id" jdbcType="INTEGER" property="pId" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="order" jdbcType="INTEGER" property="order" />
+    <result column="is_leaf" jdbcType="BIT" property="isLeaf" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="type" jdbcType="BIT" property="type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, function_name, function_code, p_id, `level`, `order`, is_leaf, url, `type`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from oa_function
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from oa_function
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hc.springcloud.entity.Function">
+    insert into oa_function (id, function_name, function_code, 
+      p_id, `level`, `order`, 
+      is_leaf, url, `type`)
+    values (#{id,jdbcType=INTEGER}, #{functionName,jdbcType=VARCHAR}, #{functionCode,jdbcType=VARCHAR}, 
+      #{pId,jdbcType=INTEGER}, #{level,jdbcType=INTEGER}, #{order,jdbcType=INTEGER}, 
+      #{isLeaf,jdbcType=BIT}, #{url,jdbcType=VARCHAR}, #{type,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hc.springcloud.entity.Function">
+    insert into oa_function
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="functionName != null">
+        function_name,
+      </if>
+      <if test="functionCode != null">
+        function_code,
+      </if>
+      <if test="pId != null">
+        p_id,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="order != null">
+        `order`,
+      </if>
+      <if test="isLeaf != null">
+        is_leaf,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="functionName != null">
+        #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionCode != null">
+        #{functionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null">
+        #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="order != null">
+        #{order,jdbcType=INTEGER},
+      </if>
+      <if test="isLeaf != null">
+        #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hc.springcloud.entity.Function">
+    update oa_function
+    <set>
+      <if test="functionName != null">
+        function_name = #{functionName,jdbcType=VARCHAR},
+      </if>
+      <if test="functionCode != null">
+        function_code = #{functionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="pId != null">
+        p_id = #{pId,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="order != null">
+        `order` = #{order,jdbcType=INTEGER},
+      </if>
+      <if test="isLeaf != null">
+        is_leaf = #{isLeaf,jdbcType=BIT},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hc.springcloud.entity.Function">
+    update oa_function
+    set function_name = #{functionName,jdbcType=VARCHAR},
+      function_code = #{functionCode,jdbcType=VARCHAR},
+      p_id = #{pId,jdbcType=INTEGER},
+      `level` = #{level,jdbcType=INTEGER},
+      `order` = #{order,jdbcType=INTEGER},
+      is_leaf = #{isLeaf,jdbcType=BIT},
+      url = #{url,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
